@@ -90,7 +90,7 @@ dependencies {
     runtimeOnly fg.deobf("mezz.jei:jei-${project.minecraft}-forge:${project.jei}")
 
     annotationProcessor "org.spongepowered:mixin:0.8.5:processor"
-}flyh
+}
 
 repositories {
     maven { url "https://maven.jaackson.me" }

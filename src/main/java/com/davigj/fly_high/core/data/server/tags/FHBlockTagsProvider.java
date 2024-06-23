@@ -26,7 +26,6 @@ public class FHBlockTagsProvider extends BlockTagsProvider {
                 .add(Blocks.HONEY_BLOCK)
                 .addTag(BlockTags.CANDLE_CAKES)
                 .addOptionalTag(new ResourceLocation("farmersdelight", "mineable/knife"))
-                .addOptionalTag(new ResourceLocation("minecraft", "candle_cakes"))
                 .addOptional(new ResourceLocation("architects_palette", "rotten_flesh_block"))
                 .addOptional(new ResourceLocation("architects_palette", "entrails"))
                 .addOptional(new ResourceLocation("architects_palette", "entrails_slab"))

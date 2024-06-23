@@ -8,10 +8,6 @@
       "required": false
     },
     {
-      "id": "#minecraft:candle_cakes",
-      "required": false
-    },
-    {
       "id": "architects_palette:rotten_flesh_block",
       "required": false
     },
