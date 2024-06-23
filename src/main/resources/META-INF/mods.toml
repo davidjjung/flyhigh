@@ -1,0 +1,53 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+issueTrackerURL = "https://github.com/davidjjung/flyhigh/issues"
+license = "MIT License"
+
+[[mods]]
+modId = "fly_high"
+version = "${file.jarVersion}"
+logoFile = "logo.png"
+itemIcon = "alexsmobs:maggot"
+configBackground = "minecraft:textures/block/dirt.png"
+authors = "DavigJ"
+credits = "DavigJ"
+displayURL = "https://modrinth.com/project/fly-high"
+displayName = "Fly High"
+description = '''
+    Adds some immersive features to flies from Alex's Mobs.
+    '''
+
+[[dependencies.fly_high]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20.1,1.21)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.fly_high]]
+modId = "forge"
+mandatory = true
+versionRange = "[47.2,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.fly_high]]
+modId = "alexsmobs"
+mandatory = true
+versionRange = "[1.22.8,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.fly_high]]
+modId = "citadel"
+mandatory = true
+versionRange = "[2.5.4,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.fly_high]]
+modId = "blueprint"
+mandatory = false
+versionRange = "[7.1.0,)"
+ordering = "AFTER"
+side = "BOTH"

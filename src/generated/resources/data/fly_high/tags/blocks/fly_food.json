@@ -1,0 +1,71 @@
+{
+  "values": [
+    "minecraft:cake",
+    "minecraft:honey_block",
+    "#minecraft:candle_cakes",
+    {
+      "id": "#farmersdelight:mineable/knife",
+      "required": false
+    },
+    {
+      "id": "#minecraft:candle_cakes",
+      "required": false
+    },
+    {
+      "id": "architects_palette:rotten_flesh_block",
+      "required": false
+    },
+    {
+      "id": "architects_palette:entrails",
+      "required": false
+    },
+    {
+      "id": "architects_palette:entrails_slab",
+      "required": false
+    },
+    {
+      "id": "architects_palette:entrails_stairs",
+      "required": false
+    },
+    {
+      "id": "architects_palette:salmon_log",
+      "required": false
+    },
+    {
+      "id": "architects_palette:cod_log",
+      "required": false
+    },
+    {
+      "id": "caverns_and_chasms:rotten_flesh_block",
+      "required": false
+    },
+    {
+      "id": "farmersdelight:organic_compost",
+      "required": false
+    },
+    {
+      "id": "upgrade_aquatic:mulberry_jam_block",
+      "required": false
+    },
+    {
+      "id": "atmospheric:aloe_gel_block",
+      "required": false
+    },
+    {
+      "id": "alexscaves:dinosaur_chop",
+      "required": false
+    },
+    {
+      "id": "alexscaves:dinosaur_chop_cooked",
+      "required": false
+    },
+    {
+      "id": "alexscaves:guano_block",
+      "required": false
+    },
+    {
+      "id": "alexscaves:guano_layer",
+      "required": false
+    }
+  ]
+}

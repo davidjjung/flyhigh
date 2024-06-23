@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "package": "com.davigj.fly_high.core.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
+  "refmap": "fly_high.refmap.json",
+  "mixins": [
+    "EntityFlyMixin",
+    "OrganicCompostBlockMixin"
+  ],
+  "client": [
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

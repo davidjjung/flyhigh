@@ -1,0 +1,15 @@
+{
+  "values": [
+    "#minecraft:wool",
+    "#minecraft:wool_carpets",
+    "minecraft:cobweb",
+    {
+      "id": "#farmersdelight:straw_blocks",
+      "required": false
+    },
+    {
+      "id": "endergetic:boof_block",
+      "required": false
+    }
+  ]
+}
