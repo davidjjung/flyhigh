@@ -27,7 +27,7 @@ side = "BOTH"
 [[dependencies.fly_high]]
 modId = "forge"
 mandatory = true
-versionRange = "[47.2,)"
+versionRange = "[47.1,)"
 ordering = "NONE"
 side = "BOTH"
 
