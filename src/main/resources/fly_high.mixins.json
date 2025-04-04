@@ -6,7 +6,10 @@
   "refmap": "fly_high.refmap.json",
   "mixins": [
     "EntityFlyMixin",
-    "OrganicCompostBlockMixin"
+    "FlytrapBlockMixin",
+    "GuanoBlockMixin",
+    "OrganicCompostBlockMixin",
+    "PottedFlytrapBlockMixin"
   ],
   "client": [
   ],

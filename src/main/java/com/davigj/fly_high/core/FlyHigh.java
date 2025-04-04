@@ -41,6 +41,7 @@ public class FlyHigh {
         FHItems.ITEMS.register(bus);
 
         context.registerConfig(ModConfig.Type.COMMON, FHConfig.COMMON_SPEC);
+        context.registerConfig(ModConfig.Type.CLIENT, FHConfig.CLIENT_SPEC);
     }
 
     private void commonSetup(FMLCommonSetupEvent event) {

@@ -12,6 +12,10 @@ public class FHConfig {
         public final ForgeConfigSpec.ConfigValue<Boolean> fliesMunch;
         public final ForgeConfigSpec.ConfigValue<Boolean> fliesBreed;
         public final ForgeConfigSpec.ConfigValue<Boolean> flyBottle;
+        public final ForgeConfigSpec.ConfigValue<Boolean> flytrapsCatchFlies;
+        public final ForgeConfigSpec.ConfigValue<Boolean> snapshot;
+        public final ForgeConfigSpec.ConfigValue<Double> killChance;
+        public final ForgeConfigSpec.ConfigValue<Boolean> guanoSpawn;
 
         Common (ForgeConfigSpec.Builder builder) {
             builder.push("changes");
@@ -28,17 +32,42 @@ public class FHConfig {
             builder.push("buzzierbees");
             flyBottle = builder.comment("Flies can be bottled").define("bottles of fly", true);
             builder.pop();
+            builder.push("alexscaves");
+            flytrapsCatchFlies = builder.comment("Flytraps catch flies").define("Flytraps catch flies", true);
+            snapshot = builder.comment("Flytraps only snap shut to kill fly entities").define("Fly snappy", false);
+            killChance = builder.comment("Chance that flytraps kill flies").defineInRange("Fly kill chance", 1.0, 0.0, 1.0);
+            guanoSpawn = builder.comment("Full guano blocks spawns flies").define("guano fly spawners", true);
+            builder.pop();
+            builder.pop();
+        }
+    }
+
+
+    public static class Client {
+        public final ForgeConfigSpec.ConfigValue<Boolean> snapSound;
+
+        Client (ForgeConfigSpec.Builder builder) {
+            builder.push("client");
+            builder.push("alexscaves");
+            snapSound = builder.comment("Flytraps make snap sounds when closing").define("Snap sounds", true);
+            builder.pop();
             builder.pop();
         }
     }
 
     static final ForgeConfigSpec COMMON_SPEC;
     public static final FHConfig.Common COMMON;
+    static final ForgeConfigSpec CLIENT_SPEC;
+    public static final FHConfig.Client CLIENT;
 
 
     static {
         final Pair<Common, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(FHConfig.Common::new);
         COMMON_SPEC = specPair.getRight();
         COMMON = specPair.getLeft();
+
+        Pair<Client, ForgeConfigSpec> clientSpecPair = new ForgeConfigSpec.Builder().configure(Client::new);
+        CLIENT_SPEC = clientSpecPair.getRight();
+        CLIENT = clientSpecPair.getLeft();
     }
 }

@@ -1,5 +1,13 @@
 {
   "values": [
-    "minecraft:cobweb"
+    "minecraft:cobweb",
+    {
+      "id": "alexscaves:flytrap",
+      "required": false
+    },
+    {
+      "id": "alexscaves:potted_flytrap",
+      "required": false
+    }
   ]
 }

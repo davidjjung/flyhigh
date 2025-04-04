@@ -77,13 +77,14 @@ sourceSets.main.resources {
 
 dependencies {
     minecraft "net.minecraftforge:forge:${project.minecraft}-${project.forge}"
-    implementation fg.deobf("maven.modrinth:citadel:ssXkoBKk")
+    implementation fg.deobf("maven.modrinth:citadel:a7H8TGhJ")
     implementation fg.deobf("maven.modrinth:alexs-mobs:oaRqJ7uM")
 
     compileOnly fg.deobf("com.teamabnormals:blueprint:${project.minecraft}-${project.blueprint}")
     compileOnly fg.deobf("maven.modrinth:buzzier-bees:PyMRj9VM")
     compileOnly fg.deobf("maven.modrinth:neapolitan:bSOBBF52")
-    compileOnly fg.deobf("maven.modrinth:farmers-delight:AxgOboGq")
+    compileOnly fg.deobf("maven.modrinth:farmers-delight:NcRp00OO")
+    compileOnly fg.deobf("maven.modrinth:alexs-caves:lC8HHXOF")
 
     compileOnly fg.deobf("mezz.jei:jei-${project.minecraft}-common-api:${project.jei}")
     compileOnly fg.deobf("mezz.jei:jei-${project.minecraft}-forge-api:${project.jei}")

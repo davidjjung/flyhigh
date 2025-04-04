@@ -42,7 +42,9 @@ public class FHBlockTagsProvider extends BlockTagsProvider {
                 .addOptional(new ResourceLocation("alexscaves", "guano_layer"))
         ;
         this.tag(FHBlockTags.FLY_PAPER)
-                .add(Blocks.COBWEB);
+                .add(Blocks.COBWEB)
+                .addOptional(new ResourceLocation("alexscaves", "flytrap"))
+                .addOptional(new ResourceLocation("alexscaves", "potted_flytrap"));
         this.tag(FHBlockTags.FLY_FOOD_BLACKLIST)
                 .addTag(BlockTags.WOOL)
                 .addTag(BlockTags.WOOL_CARPETS)

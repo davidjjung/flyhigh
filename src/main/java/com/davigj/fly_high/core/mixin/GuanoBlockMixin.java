@@ -1,6 +1,7 @@
 package com.davigj.fly_high.core.mixin;
 
 import com.davigj.fly_high.core.FHConfig;
+import com.github.alexmodguy.alexscaves.server.block.GuanoBlock;
 import com.github.alexthe666.alexsmobs.entity.AMEntityRegistry;
 import com.github.alexthe666.alexsmobs.entity.EntityFly;
 import net.minecraft.core.BlockPos;
@@ -12,21 +13,25 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.GameRules;
 import net.minecraft.world.level.biome.Biome;
+import net.minecraft.world.level.block.FallingBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.common.Tags;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
-import org.spongepowered.asm.mixin.injection.At;
-import org.spongepowered.asm.mixin.injection.Inject;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import vectorwing.farmersdelight.common.block.OrganicCompostBlock;
 
 @Pseudo
-@Mixin(OrganicCompostBlock.class)
-public class OrganicCompostBlockMixin {
-    @Inject(method = "randomTick", at = @At("HEAD"))
-    public void abiogenesis(BlockState state, ServerLevel level, BlockPos pos, RandomSource random, CallbackInfo ci) {
+@Mixin(GuanoBlock.class)
+public class GuanoBlockMixin extends FallingBlock {
+    public GuanoBlockMixin(Properties p_53205_) {
+        super(p_53205_);
+    }
+
+    public boolean isRandomlyTicking(BlockState state) {
+        return FHConfig.COMMON.guanoSpawn.get();
+    }
+
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         Holder<Biome> holder = level.getBiome(pos);
         int threshold = 16;
         if (holder.is(Tags.Biomes.IS_WET_OVERWORLD)) {

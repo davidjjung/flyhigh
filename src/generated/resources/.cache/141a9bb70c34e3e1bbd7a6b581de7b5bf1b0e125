@@ -1,4 +1,4 @@
-// 1.20.1	2024-06-23T13:33:40.2233537	Tags for minecraft:block mod id fly_high
+// 1.20.1	2025-03-31T08:50:44.7610706	Tags for minecraft:block mod id fly_high
 6c4820d1565f91d659397dafc46667ab378063da data/fly_high/tags/blocks/fly_food.json
 877e6a5cbec919a743992aea68956656e7175dd6 data/fly_high/tags/blocks/fly_food_blacklist.json
-e7a8c631b3ba3bd9a98d2bb83f927b25fe348d37 data/fly_high/tags/blocks/fly_paper.json
+b2e0cb361cd9f0d325e3be7bdaeb69070c971809 data/fly_high/tags/blocks/fly_paper.json
