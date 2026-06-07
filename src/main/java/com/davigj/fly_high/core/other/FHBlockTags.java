@@ -12,6 +12,6 @@ public class FHBlockTags {
     public static final TagKey<Block> FLY_PAPER = blockTag("fly_paper");
 
     private static TagKey<Block> blockTag(String name) {
-        return TagKey.create(Registries.BLOCK, new ResourceLocation(FlyHigh.MOD_ID, name));
+        return TagKey.create(Registries.BLOCK, ResourceLocation.fromNamespaceAndPath(FlyHigh.MOD_ID, name));
     }
 }

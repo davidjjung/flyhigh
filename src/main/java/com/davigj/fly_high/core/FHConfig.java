@@ -1,23 +1,23 @@
 package com.davigj.fly_high.core;
 
-import net.minecraftforge.common.ForgeConfigSpec;
+import net.neoforged.neoforge.common.ModConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;
 
 public class FHConfig {
     public static class Common {
-        public final ForgeConfigSpec.ConfigValue<Boolean> dirtyChimps;
-        public final ForgeConfigSpec.ConfigValue<Boolean> organicCompost;
-        public final ForgeConfigSpec.ConfigValue<Integer> flyChance;
-        public final ForgeConfigSpec.ConfigValue<Integer> loveChance;
-        public final ForgeConfigSpec.ConfigValue<Boolean> fliesMunch;
-        public final ForgeConfigSpec.ConfigValue<Boolean> fliesBreed;
-        public final ForgeConfigSpec.ConfigValue<Boolean> flyBottle;
-        public final ForgeConfigSpec.ConfigValue<Boolean> flytrapsCatchFlies;
-        public final ForgeConfigSpec.ConfigValue<Boolean> snapshot;
-        public final ForgeConfigSpec.ConfigValue<Double> killChance;
-        public final ForgeConfigSpec.ConfigValue<Boolean> guanoSpawn;
+        public final ModConfigSpec.ConfigValue<Boolean> dirtyChimps;
+        public final ModConfigSpec.ConfigValue<Boolean> organicCompost;
+        public final ModConfigSpec.ConfigValue<Integer> flyChance;
+        public final ModConfigSpec.ConfigValue<Integer> loveChance;
+        public final ModConfigSpec.ConfigValue<Boolean> fliesMunch;
+        public final ModConfigSpec.ConfigValue<Boolean> fliesBreed;
+        public final ModConfigSpec.ConfigValue<Boolean> flyBottle;
+        public final ModConfigSpec.ConfigValue<Boolean> flytrapsCatchFlies;
+        public final ModConfigSpec.ConfigValue<Boolean> snapshot;
+        public final ModConfigSpec.ConfigValue<Double> killChance;
+        public final ModConfigSpec.ConfigValue<Boolean> guanoSpawn;
 
-        Common (ForgeConfigSpec.Builder builder) {
+        Common (ModConfigSpec.Builder builder) {
             builder.push("changes");
             fliesMunch = builder.comment("Flies seek out food to munch on").define("fly munch goal", true);
             fliesBreed = builder.comment("Flies rarely breed after munching on food").define("full flies breed", true);
@@ -44,9 +44,9 @@ public class FHConfig {
 
 
     public static class Client {
-        public final ForgeConfigSpec.ConfigValue<Boolean> snapSound;
+        public final ModConfigSpec.ConfigValue<Boolean> snapSound;
 
-        Client (ForgeConfigSpec.Builder builder) {
+        Client (ModConfigSpec.Builder builder) {
             builder.push("client");
             builder.push("alexscaves");
             snapSound = builder.comment("Flytraps make snap sounds when closing").define("Snap sounds", true);
@@ -55,18 +55,18 @@ public class FHConfig {
         }
     }
 
-    static final ForgeConfigSpec COMMON_SPEC;
+    static final ModConfigSpec COMMON_SPEC;
     public static final FHConfig.Common COMMON;
-    static final ForgeConfigSpec CLIENT_SPEC;
+    static final ModConfigSpec CLIENT_SPEC;
     public static final FHConfig.Client CLIENT;
 
 
     static {
-        final Pair<Common, ForgeConfigSpec> specPair = new ForgeConfigSpec.Builder().configure(FHConfig.Common::new);
+        final Pair<Common, ModConfigSpec> specPair = new ModConfigSpec.Builder().configure(FHConfig.Common::new);
         COMMON_SPEC = specPair.getRight();
         COMMON = specPair.getLeft();
 
-        Pair<Client, ForgeConfigSpec> clientSpecPair = new ForgeConfigSpec.Builder().configure(Client::new);
+        Pair<Client, ModConfigSpec> clientSpecPair = new ModConfigSpec.Builder().configure(Client::new);
         CLIENT_SPEC = clientSpecPair.getRight();
         CLIENT = clientSpecPair.getLeft();
     }

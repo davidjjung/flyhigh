@@ -2,31 +2,29 @@ package com.davigj.fly_high.common.entity.ai.goal;
 
 import com.davigj.fly_high.common.util.IPickyEater;
 import com.davigj.fly_high.core.FHConfig;
+import com.davigj.fly_high.core.mixin.MoveToBlockGoalAccessor;
 import com.davigj.fly_high.core.other.FHBlockTags;
-import com.github.alexmodguy.alexscaves.AlexsCaves;
-import com.github.alexmodguy.alexscaves.server.block.ACBlockRegistry;
+import com.davigj.fly_high.core.other.compat.ACCompat;
 import com.github.alexthe666.alexsmobs.entity.EntityFly;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.util.Mth;
 import net.minecraft.world.entity.ai.goal.MoveToBlockGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.fml.ModList;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Arrays;
 import java.util.function.Predicate;
 
+import static com.davigj.fly_high.core.other.compat.ModConstants.ALEXSCAVES;
+
 public class FlyMunchFoodGoal extends MoveToBlockGoal {
-    public static final BooleanProperty OPEN = BooleanProperty.create("open");
     protected int ticksWaited;
     private final EntityFly fly;
 
@@ -39,7 +37,11 @@ public class FlyMunchFoodGoal extends MoveToBlockGoal {
     protected boolean isValidTarget(LevelReader level, @NotNull BlockPos pos) {
         BlockState state = level.getBlockState(pos);
         ((IPickyEater) fly).initializeOldFoodPosQueue(((IPickyEater) fly).getOldFoodPosList());
-        if (ModList.get().isLoaded("alexscaves") && (state.is(ACBlockRegistry.FLYTRAP.get()) || state.is(ACBlockRegistry.POTTED_FLYTRAP.get()))) return state.getValue(OPEN) && this.ticksWaited < 40;
+        if (ALEXSCAVES) {
+            if (ACCompat.flyTrapCase(state)) {
+                return ACCompat.isOpen(state) && this.ticksWaited < 40;
+            }
+        }
         Predicate<BlockPos> oldOrNot = wow -> wow == pos;
         boolean oldFood = Arrays.stream(((IPickyEater) fly).getOldFoodPosList()).anyMatch(oldOrNot);
         return fly.level().getEntitiesOfClass(Player.class, new AABB(pos).inflate(2)).isEmpty() && (state.is(FHBlockTags.FLY_PAPER) ||
@@ -63,9 +65,7 @@ public class FlyMunchFoodGoal extends MoveToBlockGoal {
             }
             ++this.tryTicks;
             if (this.shouldRecalculatePath()) {
-                double flytrap = ModList.get().isLoaded("alexscaves") &&
-                        (fly.level().getBlockState(this.blockPos).is(ACBlockRegistry.FLYTRAP.get()) ||
-                                fly.level().getBlockState(this.blockPos).is(ACBlockRegistry.POTTED_FLYTRAP.get())) ? 0.6 : 0;
+                double flytrap = ALEXSCAVES ? (ACCompat.flyTrapCase(fly.level().getBlockState(this.blockPos)) ? 0.6 : 0) : 0;
                 this.mob.getNavigation().moveTo((double) ((float) this.blockPos.getX()) + 0.5D,
                         (double) this.blockPos.getY() + 1 + flytrap, (double) ((float) this.blockPos.getZ()) + 0.5D, this.speedModifier);
             }
@@ -101,7 +101,7 @@ public class FlyMunchFoodGoal extends MoveToBlockGoal {
         this.ticksWaited = 0;
         this.tryTicks = 0;
         super.start();
-        this.maxStayTicks = this.mob.getRandom().nextInt(100) + 40;
+        ((MoveToBlockGoalAccessor)this).setMaxStayTicks(this.mob.getRandom().nextInt(100) + 40);
     }
 
     private void performAudiovisualEffects() {

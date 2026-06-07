@@ -1,0 +1,84 @@
+modLoader = "javafml"
+loaderVersion = "[1,)"
+issueTrackerURL = "https://github.com/davidjjung/flyhigh/issues"
+license = "MIT License"
+
+[[mixins]]
+config = "fly_high.mixins.json"
+
+[[mods]]
+modId = "fly_high"
+version = "${mod_version}"
+logoFile = "logo.png"
+itemIcon = "alexsmobs:maggot"
+configBackground = "minecraft:textures/block/dirt.png"
+authors = "DavigJ"
+credits = ""
+displayURL = "https://modrinth.com/mod/fly-high"
+displayName = "Fly High"
+description = '''
+    Adds some immersive features to flies from Alex's Mobs.
+    '''
+
+[[dependencies.fly_high]]
+modId = "minecraft"
+type = "required"
+versionRange = "[${mc_version}]"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.fly_high]]
+modId = "neoforge"
+type = "required"
+versionRange = "[${neoforge},)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.fly_high]]
+modId = "alexsmobs"
+type = "required"
+versionRange = "[1.22.17,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.fly_high]]
+modId = "citadel"
+type = "required"
+versionRange = "[2.7.0,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.fly_high]]
+modId = "alexscaves"
+type = "optional"
+versionRange = "[2.0.10,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.fly_high]]
+modId = "buzzier_bees"
+type = "optional"
+versionRange = "[7.0.1,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.fly_high]]
+modId = "neapolitan"
+type = "optional"
+versionRange = "[6.0.1,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.fly_high]]
+modId = "spawn"
+type = "optional"
+versionRange = "[2.0.4-1.21.1,)"
+ordering = "AFTER"
+side = "BOTH"
+
+[[dependencies.fly_high]]
+modId = "farmersdelight"
+type = "optional"
+versionRange = "[1.3.2,)"
+ordering = "AFTER"
+side = "BOTH"

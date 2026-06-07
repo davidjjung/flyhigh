@@ -6,6 +6,10 @@
       "required": false
     },
     {
+      "id": "spawn:zombified_flower",
+      "required": false
+    },
+    {
       "id": "alexscaves:potted_flytrap",
       "required": false
     }

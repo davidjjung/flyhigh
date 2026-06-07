@@ -1,6 +1,7 @@
 package com.davigj.fly_high.core.mixin;
 
 import com.davigj.fly_high.core.FHConfig;
+import com.davigj.fly_high.core.other.compat.ACCompat;
 import com.github.alexmodguy.alexscaves.server.block.GuanoBlock;
 import com.github.alexthe666.alexsmobs.entity.AMEntityRegistry;
 import com.github.alexthe666.alexsmobs.entity.EntityFly;
@@ -16,20 +17,21 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.FallingBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.common.Tags;
+import net.neoforged.neoforge.common.Tags;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Pseudo;
 
 @Pseudo
 @Mixin(GuanoBlock.class)
-public class GuanoBlockMixin extends FallingBlock {
+public abstract class GuanoBlockMixin extends FallingBlock {
     public GuanoBlockMixin(Properties p_53205_) {
         super(p_53205_);
     }
 
     public boolean isRandomlyTicking(BlockState state) {
-        return FHConfig.COMMON.guanoSpawn.get();
+        return true;
     }
+
 
     public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
         Holder<Biome> holder = level.getBiome(pos);
@@ -39,7 +41,7 @@ public class GuanoBlockMixin extends FallingBlock {
         }
 
         if (level.dimension() == ServerLevel.OVERWORLD && random.nextInt(threshold) == 1
-                && level.getGameRules().getBoolean(GameRules.RULE_DOMOBSPAWNING) && FHConfig.COMMON.organicCompost.get()) {
+                && level.getGameRules().getBoolean(GameRules.RULE_DOMOBSPAWNING) && FHConfig.COMMON.guanoSpawn.get()) {
             Direction dir = Direction.getRandom(random);
             BlockPos candPos = pos.relative(dir);
             BlockState cand = level.getBlockState(candPos);

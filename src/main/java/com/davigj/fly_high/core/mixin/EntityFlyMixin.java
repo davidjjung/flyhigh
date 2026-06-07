@@ -25,6 +25,7 @@ public class EntityFlyMixin implements IPickyEater {
         this.foodPosList[0] = newPos;
     }
 
+
     @Override
     public void initializeOldFoodPosQueue(BlockPos[] maybe) {
         if(maybe == null) {
