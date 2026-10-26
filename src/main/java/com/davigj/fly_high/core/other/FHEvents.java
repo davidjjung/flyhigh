@@ -3,7 +3,6 @@ package com.davigj.fly_high.core.other;
 import com.davigj.fly_high.common.entity.ai.goal.FlyMunchFoodGoal;
 import com.davigj.fly_high.core.FHConfig;
 import com.davigj.fly_high.core.FlyHigh;
-import com.davigj.fly_high.core.other.compat.NeapolitanCompat;
 import com.davigj.fly_high.core.registry.FHItems;
 import com.github.alexthe666.alexsmobs.entity.EntityFly;
 import net.minecraft.world.entity.Entity;
@@ -24,7 +23,6 @@ public class FHEvents {
     @SubscribeEvent
     public static void dirtyLittleFreaks(EntityTickEvent.Post event) {
         if (NEAPOLITAN && FHConfig.COMMON.dirtyChimps.get()) {
-            NeapolitanCompat.spawnFromChimp(event.getEntity());
         }
     }
 

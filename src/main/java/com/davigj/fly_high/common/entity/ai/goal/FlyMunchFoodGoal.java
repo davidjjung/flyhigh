@@ -110,13 +110,13 @@ public class FlyMunchFoodGoal extends MoveToBlockGoal {
             BlockPos currentPos = fly.blockPosition();
             BlockState currentState = fly.level().getBlockState(this.blockPos);
             if (!currentState.is(FHBlockTags.FLY_PAPER)) {
-                BlockParticleOption munch = new BlockParticleOption(ParticleTypes.BLOCK, currentState);
+                BlockParticleOption munch = new BlockParticleOption(ParticleTypes.BLOCK, currentState, currentPos);
                 Vec3 flyEye = fly.getEyePosition();
-                ((ServerLevel) fly.level()).sendParticles(munch.setPos(currentPos),
+                ((ServerLevel) fly.level()).sendParticles(munch,
                         flyEye.x, flyEye.y + 0.05, flyEye.z, 1, 0, 0.05D, 0, 0.15D);
 
                 double voiceMod = fly.getRandom().nextGaussian() * 0.4;
-                fly.playSound(SoundEvents.GENERIC_EAT, 0.12F, (float) (1.6F + voiceMod));
+                fly.playSound(SoundEvents.GENERIC_EAT.value(), 0.12F, (float) (1.6F + voiceMod));
             }
         }
     }
