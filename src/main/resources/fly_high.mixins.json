@@ -6,13 +6,9 @@
   "refmap": "fly_high.refmap.json",
   "plugin": "com.moulberry.mixinconstraints.ConstraintsMixinPlugin",
   "mixins": [
-    "EntityFlyBottleableMixin",
     "EntityFlyMixin",
     "FlytrapBlockMixin",
-    "GuanoBlockMixin",
-    "MoveToBlockGoalAccessor",
-    "OrganicCompostBlockMixin",
-    "PottedFlytrapBlockMixin"
+    "MoveToBlockGoalAccessor"
   ],
   "client": [
   ],
