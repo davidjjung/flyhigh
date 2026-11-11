@@ -1,22 +1,22 @@
 package com.davigj.fly_high.common.item;
 
 import com.github.alexthe666.alexsmobs.entity.AMEntityRegistry;
-import com.teamabnormals.buzzier_bees.common.entity.Bottleable;
-import com.teamabnormals.buzzier_bees.core.mixin.SilverfishMixin;
-import com.teamabnormals.buzzier_bees.core.registry.BBDataComponents;
 import java.util.List;
 import javax.annotation.Nullable;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.core.component.DataComponents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.MobSpawnType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.EntitySpawnReason;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.DispensibleContainerItem;
 import net.minecraft.world.item.Item;
@@ -63,15 +63,15 @@ public class FlyBottleItem extends Item implements DispensibleContainerItem {
         }
     }
 
-    public void checkExtraContent(@Nullable Player player, Level level, ItemStack containerStack, BlockPos pos) {
+    public void checkExtraContent(@Nullable LivingEntity entity, Level level, ItemStack containerStack, BlockPos pos) {
         if (level instanceof ServerLevel) {
             this.spawn((ServerLevel)level, containerStack, pos);
-            level.gameEvent(player, GameEvent.ENTITY_PLACE, pos);
+            level.gameEvent(entity, GameEvent.ENTITY_PLACE, pos);
         }
 
     }
 
-    public boolean emptyContents(@Nullable Player player, Level level, BlockPos pos, @Nullable BlockHitResult result) {
+    public boolean emptyContents(@Nullable LivingEntity entity, Level level, BlockPos pos, @Nullable BlockHitResult result) {
         return level.getBlockState(pos).getCollisionShape(level, pos).isEmpty();
     }
 
@@ -80,20 +80,15 @@ public class FlyBottleItem extends Item implements DispensibleContainerItem {
     }
 
     private void spawn(ServerLevel serverLevel, ItemStack bottleedMobStack, BlockPos pos) {
-        Entity var5 = this.type.spawn(serverLevel, bottleedMobStack, (Player)null, pos, MobSpawnType.BUCKET, true, false);
-        if (var5 instanceof Bottleable bottleable) {
-            CustomData customdata = (CustomData)bottleedMobStack.getOrDefault(BBDataComponents.BOTTLE_ENTITY_DATA, CustomData.EMPTY);
-            bottleable.loadFromBottleTag(customdata.copyTag());
-            bottleable.setFromBottle(true);
-        }
+        Entity var5 = this.type.spawn(serverLevel, bottleedMobStack, (Player)null, pos, EntitySpawnReason.BUCKET, true, false);
     }
 
     public void appendHoverText(ItemStack stack, Item.TooltipContext context, List<Component> tooltip, TooltipFlag tooltipFlag) {
         if (this.type == AMEntityRegistry.FLY.get()) {
-            CustomData flyData = (CustomData)stack.getOrDefault(BBDataComponents.BOTTLE_ENTITY_DATA, CustomData.EMPTY);
+            CustomData flyData = (CustomData)stack.getOrDefault(DataComponents.BUCKET_ENTITY_DATA, CustomData.EMPTY);
             CompoundTag tag = flyData.copyTag();
             if (tag != null) {
-                if (tag.contains("Age") && tag.getInt("Age") < 0) {
+                if (tag.getInt("Age").orElse(0) < 0) {
                     tooltip.add(Component.translatable("tooltip.buzzier_bees.is_baby").withStyle(ChatFormatting.GRAY));
                 }
             }

@@ -2,7 +2,7 @@ plugins {
     id "java-library"
     id "idea"
     id "maven-publish"
-    id "net.neoforged.gradle.userdev" version "7.0.182"
+    id "net.neoforged.gradle.userdev" version "7.1.39"
 }
 
 version = "${project.mc_version}-${project.mod_version}"
@@ -30,14 +30,6 @@ runs {
             add project.sourceSets.main
         }
     }
-    data {
-        modSources {
-            add project.sourceSets.main
-        }
-        arguments.addAll "--mod", project.mod_id, "--all", "--output", file("src/generated/resources/").getAbsolutePath(), "--existing",
-                file("src/main/resources").getAbsolutePath(),
-                "--existing-mod", "blueprint"
-    }
 }
 
 sourceSets.main.resources {
@@ -49,37 +41,18 @@ dependencies {
     implementation(jarJar("com.moulberry:mixinconstraints:1.0.9")) {
         jarJar.ranged(it, "[1.0.9,)")
     }
+    // alexsmobs itself has no 1.21.11 build; Alex's Mobs Continued keeps the
+    // same modid and API packages and targets 1.21.11
+    compileOnly("maven.modrinth:alexs-mobs-continued:r3fvKaiE")
 
-    implementation("maven.modrinth:citadel:uzrkhBpn")
-    implementation("maven.modrinth:alexs-mobs(1.21.1):KSgki4uc")
 
-    compileOnly("maven.modrinth:alexs-caves-(unofficial-port):pC1MYhqR")
-    compileOnly("maven.modrinth:buzzier-bees:Y12rtT96")
-    compileOnly("maven.modrinth:neapolitan:RQ5qgaUC")
-    compileOnly("maven.modrinth:spawn-mod:kmNDEibJ")
-    compileOnly("maven.modrinth:farmers-delight:GbNuOZ4S")
 
-    runtimeOnly("maven.modrinth:alexs-caves-(unofficial-port):pC1MYhqR")
-    runtimeOnly("maven.modrinth:blueprint:5JOCYuQM")
-    runtimeOnly("maven.modrinth:buzzier-bees:Y12rtT96")
-    runtimeOnly("maven.modrinth:neapolitan:RQ5qgaUC")
-    runtimeOnly("maven.modrinth:spawn-mod:kmNDEibJ")
-    runtimeOnly("maven.modrinth:farmers-delight:GbNuOZ4S")
+    compileOnly("maven.modrinth:jei:6MHwW9vE")
 
-    compileOnly("mezz.jei:jei-${project.mc_version}-neoforge-api:${project.jei}")
-    runtimeOnly("mezz.jei:jei-${project.mc_version}-neoforge:${project.jei}")
-}
-
-subsystems {
-    parchment {
-        minecraftVersion = "${project.mc_version}"
-        mappingsVersion = "${project.parchment}"
-    }
 }
 
 repositories {
     maven { url = "https://maven.blamejared.com/" }
-    maven { url = "https://modmaven.dev" }
     maven { url = "https://api.modrinth.com/maven" }
     maven { url = "https://jitpack.io" }
 }
