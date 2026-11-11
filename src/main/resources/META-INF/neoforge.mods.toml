@@ -42,13 +42,6 @@ ordering = "AFTER"
 side = "BOTH"
 
 [[dependencies.fly_high]]
-modId = "citadel"
-type = "required"
-versionRange = "[2.7.0,)"
-ordering = "AFTER"
-side = "BOTH"
-
-[[dependencies.fly_high]]
 modId = "alexscaves"
 type = "optional"
 versionRange = "[2.0.10,)"

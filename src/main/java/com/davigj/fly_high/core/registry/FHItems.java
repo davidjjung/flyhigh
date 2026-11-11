@@ -12,13 +12,13 @@ import java.util.function.Supplier;
 
 public class FHItems {
     public static final DeferredRegister<Item> ITEMS;
-    public static final DeferredHolder<Item, Item> BOTTLE_OF_FLY;
+//    public static final DeferredHolder<Item, Item> BOTTLE_OF_FLY;
 
     static {
         ITEMS = DeferredRegister.create(BuiltInRegistries.ITEM, "fly_high");
-        BOTTLE_OF_FLY = register("fly_bottle", () -> {
-            return new FlyBottleItem(AMEntityRegistry.FLY.get(), (new Item.Properties()).craftRemainder(Items.GLASS_BOTTLE).stacksTo(1));
-        });
+//        BOTTLE_OF_FLY = register("fly_bottle", () -> {
+//            return new FlyBottleItem(AMEntityRegistry.FLY.get(), (new Item.Properties()).craftRemainder(Items.GLASS_BOTTLE).stacksTo(1));
+//        });
     }
 
     private static <I extends Item> DeferredHolder<Item, I> register(String id, Supplier<? extends I> item) {

@@ -37,6 +37,6 @@ public class BBCompat {
     };
 
     private static void registerDispenseBehaviors() {
-        DispenserBlock.registerBehavior((ItemLike) FHItems.BOTTLE_OF_FLY.get(), EMPTY_FLY_BOTTLE_BEHAVIOR);
+//        DispenserBlock.registerBehavior((ItemLike) FHItems.BOTTLE_OF_FLY.get(), EMPTY_FLY_BOTTLE_BEHAVIOR);
     }
 }

@@ -18,7 +18,7 @@ public class FlyHigh {
         FHItems.ITEMS.register(bus);
         bus.addListener(this::commonSetup);
         bus.addListener(this::clientSetup);
-        bus.addListener(this::dataSetup);
+//        bus.addListener(this::dataSetup);
 
         container.registerConfig(ModConfig.Type.COMMON, FHConfig.COMMON_SPEC);
         container.registerConfig(ModConfig.Type.CLIENT, FHConfig.CLIENT_SPEC);

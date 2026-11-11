@@ -43,9 +43,8 @@ dependencies {
     }
     // alexsmobs itself has no 1.21.11 build; Alex's Mobs Continued keeps the
     // same modid and API packages and targets 1.21.11
-    compileOnly("maven.modrinth:alexs-mobs-continued:r3fvKaiE")
-
-
+    implementation("maven.modrinth:alexs-mobs-continued:r3fvKaiE")
+    implementation("maven.modrinth:codxlib:WxwLuZ2H")
 
     compileOnly("maven.modrinth:jei:6MHwW9vE")
 

@@ -37,7 +37,7 @@ public class FHEvents {
     @SubscribeEvent
     static void buildCreativeModeTabs(BuildCreativeModeTabContentsEvent event) {
         if (BB && event.getTabKey().equals(CreativeModeTabs.TOOLS_AND_UTILITIES)) {
-            event.insertAfter(Items.GLASS_BOTTLE.getDefaultInstance(), FHItems.BOTTLE_OF_FLY.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
+//            event.insertAfter(Items.GLASS_BOTTLE.getDefaultInstance(), FHItems.BOTTLE_OF_FLY.get().getDefaultInstance(), CreativeModeTab.TabVisibility.PARENT_AND_SEARCH_TABS);
         }
     }
 }
